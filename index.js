@@ -49,12 +49,21 @@ secondButton.addEventListener("mouseenter", consoleHello);
 
 const noButton = document.getElementById("no-btn");
 
-noButton.addEventListener("mouseenter", ghostButton);
+noButton.addEventListener("mouseenter", ghostButton /* (event) => {
+    console.log(event);
+      const btn = event.target;
+      btn.style.display = "none";
+    event.target.removeEventListener("mouseenter", ghostButton);
+    console.log('test');
+  }
+  */
+  //  Bad practice!
+);
 
 function ghostButton(event) {
   console.log(event);
-    const btn = event.target;
-    btn.style.display = "none";
+  const btn = event.target;
+  btn.style.display = "none";
   event.target.removeEventListener("mouseenter", ghostButton);
-  console.log('test');
+  console.log("test");
 }
