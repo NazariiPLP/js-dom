@@ -12,21 +12,20 @@
 */
 
 function getAlert(event) {
-    const btn = event.target;
+  const btn = event.target;
 
-    if(btn.style.backgroundColor === 'red') {
-        btn.style.backgroundColor = 'unset';
-    } else {
-        btn.style.backgroundColor = 'red';
-    }
+  if (btn.style.backgroundColor === "red") {
+    btn.style.backgroundColor = "unset";
+  } else {
+    btn.style.backgroundColor = "red";
+  }
 }
 
-const buttonElement = document.getElementById('btn');
+const buttonElement = document.getElementById("btn");
 
-buttonElement.addEventListener('click', getAlert);
+buttonElement.addEventListener("click", getAlert);
 // 1 варіант: зареєстрували обробник події натискання миші на кнопку
 // 2 варіант: навісили обробник натискання миші на кнопку
-
 
 /*
 
@@ -37,10 +36,25 @@ buttonElement.addEventListener('click', getAlert);
 
 */
 
-const secondButton = document.getElementById('second-btn');
+const secondButton = document.getElementById("btn2");
 
-function consoleHello() {
-    console.log('Привіт');
+function consoleHello(event) {
+  console.log("Привіт");
+  event.target.removeEventListener("mouseenter", consoleHello);
 }
 
-secondButton.addEventListener('mouseenter', consoleHello);
+secondButton.addEventListener("mouseenter", consoleHello);
+
+////
+
+const noButton = document.getElementById("no-btn");
+
+noButton.addEventListener("mouseenter", ghostButton);
+
+function ghostButton(event) {
+  console.log(event);
+    const btn = event.target;
+    btn.style.display = "none";
+  event.target.removeEventListener("mouseenter", ghostButton);
+  console.log('test');
+}
