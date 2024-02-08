@@ -1,36 +1,46 @@
 // console.log(this); // Window object
 
-// alert('test'); // window.alert('test');
+// alert('test'); // window.alert('test')
 
-// console.dir(document);
+//console.dir(document);
 
 /*
 
-1. Всі елементи на сторінці - це окремі об'єкти.
-2. Всі елементи можна підписати на події.
+1. Всі елементи на сторінці - окремі об'єкти
+2. Всі елементи можна підписати на події
 
 */
 
-function getAlert() {
-  alert("Hello user!");
+function getAlert(event) {
+    const btn = event.target;
+
+    if(btn.style.backgroundColor === 'red') {
+        btn.style.backgroundColor = 'unset';
+    } else {
+        btn.style.backgroundColor = 'red';
+    }
 }
 
-const buttonElement = document.getElementById("btn");
+const buttonElement = document.getElementById('btn');
 
-buttonElement.addEventListener("click", getAlert);
-// 1 варіант: зареєстрували обробник події натискання миші кнопку
-// 2 варіант: навісили обробник події натискання миші на кнопку
+buttonElement.addEventListener('click', getAlert);
+// 1 варіант: зареєстрували обробник події натискання миші на кнопку
+// 2 варіант: навісили обробник натискання миші на кнопку
+
 
 /*
+
 Зробіть кнопку, додайте їй id
 Напишіть функцію, яка виводить в консоль "привіт"
 Навісити обробку події наведення миші на цю кнопку
+
+
 */
 
+const secondButton = document.getElementById('second-btn');
+
 function consoleHello() {
-  console.log("Привіт!");
+    console.log('Привіт');
 }
 
-const buttonElement2 = document.getElementById("btn2");
-
-buttonElement2.addEventListener('mouseenter', consoleHello);
+secondButton.addEventListener('mouseenter', consoleHello);
