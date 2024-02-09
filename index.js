@@ -1,30 +1,30 @@
-const form = document.getElementById('name-form');
+const collection = document.getElementsByClassName('paragraph');
 
-form.addEventListener('submit', consoleForm);
+// for(let i = 0; i < collection.length; i++) {
+//   collection[i].style.color = 'green';
+// }
 
-function consoleForm(event) {
-  event.preventDefault();
+// for... of - спеціальний цикл, який перебирає об'єкт по ключам
 
-  const form = event.target;
-  const value = form[0].value;
-  console.log(value);
+for(let p of collection) {
+  p.style.color = 'green';
 }
 
+const btns = document.getElementsByTagName('button');
+const arr = [...btns];
 
-/*
-Створити форму в HTML
-В формі запитувати ім'я користувача
+console.log(btns);
+console.log(arr);
 
-При відправленні форми - привітайте користувача ("привіт ім'я користувача")
-Ім'я користувача візьміть з інпуту форми
-*/
+arr.forEach((button) => {
+  button.style.backgroundColor = 'red';
+});
 
-form.addEventListener('submit', consoleHello);
+function hello(event) {
+  console.log('Hello, user!');
+  event.target.removeEventListener('click', hello);
+}
 
-function consoleHello (event) {
-  event.preventDefault();
-
-  const form = event.target;
-  const value = form[0].value;
-  console.log(`Hello, ${value}!`);
+for(let btn of btns) {
+  btn.addEventListener('click', hello);
 }
