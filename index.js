@@ -11,3 +11,4 @@ function convertHandler(event) {
 
     document.querySelector('#result').innerHTML = `${temperatureInput} C = ${farenheit} F`;
 }
+
