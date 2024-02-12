@@ -1,28 +1,19 @@
 /*
-1. Є div
-2. Є дві кнопки: одна - "Зробити червоним", друга - "Зробити зеленим"
+Якщо ви натискаєте на цю кнопку - на сайті вмикається темний режим
+(для тегу body встановіть 
+backgroundColor: якийсь_темний_колір;
+color: white;    
+)
 
-3. За натисненням на кнопку, фоновий колір div має змінитисб на відповідний, який вказаний на кнопці
+Якщо ви натискаєте на цю кнопку ще раз - на сайті ВИМИКАЄТЬСЯ темний режим
+
+(toggle)
 */
 
-const div = document.querySelector("#box");
-div.classList.add('bg-color-red');
-console.log(div.classList);
-div.classList.remove('bg-color-red');
-console.log(div.classList);
+const btn = document.querySelector('#btn');
 
-const [red, green] = document.querySelectorAll(".btn");
+btn.addEventListener('click', changeMode);
 
-red.addEventListener("click", redBtnHandler);
-
-function redBtnHandler(event) {
-  // div.style.backgroundColor = "red";
-  div.classList.toggle('bg-color-red');
-}
-
-green.addEventListener("click", greenBtnHandler);
-
-function greenBtnHandler(event) {
-  // div.style.backgroundColor = "green";
-  div.classList.toggle('bg-color-green');
+function changeMode(event) {
+  document.body.classList.toggle('dark-theme');
 }
