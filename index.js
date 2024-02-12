@@ -1,19 +1,32 @@
-/*
-Якщо ви натискаєте на цю кнопку - на сайті вмикається темний режим
-(для тегу body встановіть 
-backgroundColor: якийсь_темний_колір;
-color: white;    
-)
+// const event = new Event('click');
+// console.log(event.composedPath());
 
-Якщо ви натискаєте на цю кнопку ще раз - на сайті ВИМИКАЄТЬСЯ темний режим
+const button = document.querySelector('button');
 
-(toggle)
-*/
+button.addEventListener('click', btnClickHandler);
 
-const btn = document.querySelector('#btn');
-
-btn.addEventListener('click', changeMode);
-
-function changeMode(event) {
-  document.body.classList.toggle('dark-theme');
+function btnClickHandler(event) {
+  // console.log(event.composedPath());
+  console.log(event.target); // той, на кому спрацювала подія
+  // target - елемент на якому сталася подія
+  // target - елемент, до якого буде занурюватись подія
+  console.log(event.currentTarget); // той, якому належав обробник події
+  // currentTarget - елемент, якому належав обробник події
 }
+
+const clickEvent = new MouseEvent('click');
+
+// button.dispatchEvent(clickEvent);
+
+/*
+3 фази події:
+
+1. Фаза занурення.
+Подія стається на рівні ОС, ОС передає подію браузеру (Window), то передає подію document -> body -> .....
+
+2. Фаза цілі.
+Подія досягла елемента, елемент - це target
+
+3. Фаза сплиття.
+Подія починає спливати у зворотньому напрямку, тобто від елемента (таргета) до ОС...
+*/
