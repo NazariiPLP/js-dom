@@ -6,22 +6,18 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Конвертер валют</h1>
-    <form id="currency-converter-form">
+    <h1>Конвертер температури</h1>
+
+    <form id="temperature-converter-form">
       <label>
-        Сума конвертації
-        <input type="number" id="amount" min="1" required/>
-      </label>
-      <label for>
-        Оберіть валюту:
-        <select id="currency" required>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-        </select>
+        Введіть темературу у градусах Цельсія:
+        <input type="number" id="temperature" required />
       </label>
       <button type="submit">Конвертувати</button>
-      <div id="result"></div>
     </form>
+
+    <div id="result"></div>
+
     <script src="./index.js"></script>
   </body>
 </html>
