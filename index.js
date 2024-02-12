@@ -1,14 +1,28 @@
-const converterForm = document.querySelector('#temperature-converter-form');
+/*
+1. Є div
+2. Є дві кнопки: одна - "Зробити червоним", друга - "Зробити зеленим"
 
-converterForm.addEventListener('submit', convertHandler);
+3. За натисненням на кнопку, фоновий колір div має змінитисб на відповідний, який вказаний на кнопці
+*/
 
-function convertHandler(event) {
-    event.preventDefault();
+const div = document.querySelector("#box");
+div.classList.add('bg-color-red');
+console.log(div.classList);
+div.classList.remove('bg-color-red');
+console.log(div.classList);
 
-    const temperatureInput = Number(document.querySelector('#temperature').value);
+const [red, green] = document.querySelectorAll(".btn");
 
-    const farenheit = (temperatureInput * 9 / 5) + 32;
+red.addEventListener("click", redBtnHandler);
 
-    document.querySelector('#result').innerHTML = `${temperatureInput} C = ${farenheit} F`;
+function redBtnHandler(event) {
+  // div.style.backgroundColor = "red";
+  div.classList.toggle('bg-color-red');
 }
 
+green.addEventListener("click", greenBtnHandler);
+
+function greenBtnHandler(event) {
+  // div.style.backgroundColor = "green";
+  div.classList.toggle('bg-color-green');
+}
