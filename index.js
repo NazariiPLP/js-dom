@@ -1,22 +1,20 @@
-/*
-
-https://cdn.royalcanin-weshare-online.io/3CENa2QBaxEApS7Lqd5j/v6/yellow-labrador-lying-in-the-grass
-https://petslike.net/media/cache/sylius_blog_item_image/35/6c/d35c891e94aeda634264c402088f.jpeg
-
-1. В HTML є елемент img.
-2. В HTML є дві кнопки
-Ці кнопки в data-атрибутах містять посилання на пенву картинку (адреса картинки)
-
-3. Задача: За натисненням на кнопку має відобразитись в тезі img відповідна цій кнопці картинка
-
-*/
-
-const [btn1, btn2] = document.querySelectorAll('button');
-
-btn1.addEventListener('click', clickHandler);
-btn2.addEventListener('click', clickHandler);
-
-function clickHandler({target}) {
-  const img = target.parentNode.children[0];
-  img.setAttribute('src', target.dataset.src);
+function createDiv() {
+  const div = document.createElement("div"); // 1. Створення елементу у пам'яті
+  div.classList.add("box"); // 2. До цього елементу приєднумо стильовий клас
+  div.append("Hello world"); // 3. До цього елемену приєдуємо текстовий вузол
+  document.body.append(div); // 4. Приєднуємо текствоий елемент до body
+  /*
+  <div class="box">Hello world</div>
+  */
+  // btn.removeEventListener('click', createDiv);
 }
+
+const btn = document.querySelector("button");
+btn.addEventListener("click", createDiv);
+
+/*
+Спробуйте створити декілька HTML елементів через JS, (document.createElement)
+Спробуйте додати якісь стильові класи цим елементам. (element.classlist.add)
+Спробуйте додати якийсь текстовий вузол для елементів. ( element.append('text...')  )
+Причепіть створені елементи до body (  document.body.append(element)  )
+*/
