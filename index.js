@@ -9,8 +9,8 @@ function createDiv() {
   // btn.removeEventListener('click', createDiv);
 }
 
-const btn = document.querySelector("button");
-btn.addEventListener("click", createDiv);
+const btnDiv = document.querySelector(".btn-div");
+btnDiv.addEventListener("click", createDiv);
 
 /*
 Спробуйте створити декілька HTML елементів через JS, (document.createElement)
@@ -18,3 +18,24 @@ btn.addEventListener("click", createDiv);
 Спробуйте додати якийсь текстовий вузол для елементів. ( element.append('text...')  )
 Причепіть створені елементи до body (  document.body.append(element)  )
 */
+
+const btnHeader = document.querySelector('.btn-header');
+btnHeader.addEventListener('click', createHeader);
+
+
+function createHeader() {
+  const h1 = document.createElement('header');
+  h1.classList.add('header');
+  h1.append('Main header');
+  document.body.append(h1);
+}
+
+const btnParagraph = document.querySelector('.btn-paragraph');
+btnParagraph.addEventListener('click', createParapraph);
+
+function createParapraph() {
+  const paragraph = document.createElement('p');
+  paragraph.classList.add('center-paragrapg');
+  paragraph.append('Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim animi fugiat optio, quis repellendus sunt aperiam nostrum aut, autem, accusantium eum adipisci quod pariatur earum dolore cupiditate repellat illum nemo?');
+  document.body.append(paragraph);
+}

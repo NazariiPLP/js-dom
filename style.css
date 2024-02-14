@@ -3,3 +3,17 @@
     height: 50px;
     background-color: orange;
 }
+
+.header {
+    color: goldenrod;
+    text-align: center;
+}
+
+.center-paragrapg {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
