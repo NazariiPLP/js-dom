@@ -1,6 +1,6 @@
 /*
-Є section, на якій треба клацати мишою
-Є div, який має переміститись на точку, в яку клацнули мишею
+Дан section, на якій треба клацати мишею
+Дан div, який має переміститись на точку, в яку клацнули мишею
 */
 
 const field = document.querySelector('#game-field');
@@ -17,7 +17,11 @@ function clickHandler(event) {
     if(event.currentTarget === event.target) { // якщо ми натискаємо на ігрове поле - переміщенню бути
         const {target: {children: {box}}, clientX, clientY} = event;
 
-        box.style.top = `${clientY}px`;
-        box.style.left = `${clientX}px`;
+        box.style.top = `${clientY- (box.offsetHeight / 2)}px`;
+        box.style.left = `${clientX - (box.offsetWidth / 2)}px`;
     }
 }
+
+/*
+Зробити так, щоб квадрат не вилазив за межі ігрового поля
+*/
