@@ -33,11 +33,11 @@ const data =[
         id: 7,
         name: 'Tracy',
         description: 'Description for Tracy',
-        profilePicture: 'https://masterpiecer-images.s3.yandex.net/487ca75268ea11eeaea6da477c0f1ee2:upscaled'
+        profilePicture: 'Thttps://masterpiecer-images.s3.yandex.net/487ca75268ea11eeaea6da477c0f1ee2:upscaled'
     }, {
         id: 8,
         name: 'James',
         description: 'Description for James',
-        profilePicture: 'https://masterpiecer-images.s3.yandex.net/487ca75268ea11eeaea6da477c0f1ee2:upscaled'
+        profilePicture: 'Thttps://masterpiecer-images.s3.yandex.net/487ca75268ea11eeaea6da477c0f1ee2:upscaled'
     }
 ]
