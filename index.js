@@ -1,30 +1,31 @@
 /*
 
-<article class="card-wrapper">
-        <img class="card-image" src="https://pm1.aminoapps.com/6750/dddd7fbf857879e7a4513d20a85c1c89d5d74a41v2_hq.jpg" alt="John avatar">
+    <section id="root">
+      <article class="card-wrapper">
+        <div class="image-wrapper">
+        <img class="card-image" src="https://masterpiecer-images.s3.yandex.net/487ca75268ea11eeaea6da477c0f1ee2:upscaled">
+        </div>
         <h2 class="username">John</h2>
         <p class="description">Description for John</p>
-</article>
+      </article>
+    </section>
 
 */
 
 const root = document.querySelector('#root');
 
 function createUserCard(user) {
-    // 1. Створення img
-    const img = document.createElement('img');
-    img.setAttribute('src', user.profilePicture);
-    img.setAttribute('alt', user.name);
-    img.classList.add('card-image');
+    // 1. Cтворюємо обгортку для картинки
+    const imgWrapper = createImageWrapper(user);
 
-    // 2. Створення h2
+    // 3. Створення h2
     const h2 = createElement('h2', {classNames: ['username']}, user.name);
 
-    // 3. Створення p
+    // 4. Створення p
     const p = createElement('p', {classNames: ['description']}, user.description);
 
-    // 4. Створюємо і повертаємо article, в який вкладені створені img, h2, p
-    return createElement('article', {classNames: ['card-wrapper']}, img, h2, p);
+    // 5. Створюємо і повертаємо article, в який вкладені створені img, h2, p
+    return createElement('article', {classNames: ['card-wrapper']}, imgWrapper, h2, p);
 }
 
 const cardArray = data.map(user => createUserCard(user));
@@ -43,4 +44,38 @@ function createElement(type, {classNames}, ...childNodes) {
     elem.append(...childNodes);
 
     return elem;
+}
+
+function imageLoadHandler({target}) {
+  console.log('image successfully loaded');
+  const parrentWrapper = document.querySelector(`#wrapper${target.dataset.id}`);
+  parrentWrapper.append(target);
+}
+
+function imageErrorHandler({target}) {
+  target.remove();
+  console.log('image loading has error');
+}
+
+function createUserImage(user) {
+  const img = createElement('img', {classNames: ['card-image']});
+  img.setAttribute('src', user.profilePicture);
+  img.setAttribute('alt', user.name);
+  img.dataset.id = user.id;
+  
+  img.addEventListener('load', imageLoadHandler);
+  img.addEventListener('error', imageErrorHandler);
+
+  return img;
+}
+
+function createImageWrapper(user) {
+  // 1. Створення заглушки
+  const imgWrapper = createElement('div', {classNames: ['image-wrapper']});
+  imgWrapper.setAttribute('id', `wrapper${user.id}`);
+
+  // 2. Створення img
+  const img = createUserImage(user);
+
+  return imgWrapper;
 }
