@@ -1,70 +1,44 @@
 /*
-Задача: створення простенької TODO
+Регулярні вирази - своєрідний фільтр для текстових даних.
 
-Базовий рівень. 
+Регулярні вирази- інструмент порівняння якогось рядка із текстових даних.
 
-1. Зробити input для вводу тексту
-2. Зробити кнопку, яка по натисненню текст з input перетворює на елемент списку
+За допомогою регулярки, ми описуємо, який 
 
-<form>
-  <input type="text" />
-  <button>Click to add<button/>
-</form>
+^ - початок рядка
+$ - кінець рядка
+[a-z] - послідовність символів
+[a-zA-Z] - два діапазони одночасно
+[abcdef] - перерахунок символів вручну
 
-<ul>
-  <li>Зробити щось одне</li>
-  <li>Зробити щось інше</li>
-<ul>
-
-Просунутий рівень.
-
-Задача: до кожної li приєднати кнопку, за допомогою якої зі списку можна видалити
+/^[a-zA-Z]{2, 5}/ - шукаємо набір від 2 до 5 символів
+/^[a-zA-Z]{2,}[0-9]/ - шукаємо слово будь-якої довжини більше двох літер, в кінці має бути мінімум 1 цифра і мінімум 1 .
+/^[a-zA-Z]{2,}[0-9]+\.$ - шукаємо слово будь-якої довжини більше двох літер, в кінці має бути мінімум 1 цифра і мінімум 1 .
 */
 
-const form = document.querySelector('#todo-form');
+// const regexp = /^Test$/;
 
-let taskCount = 0;
+const str1 = 'hello';
+const str2 = new String('hello');
 
-form.addEventListener('submit', addItem);
+// RegExp
 
-function addItem(event) {
-  event.preventDefault();
-  
-  // Інкрементація лічильника завдань
-  taskCount++;
-  // Перевірка, чи не забагато завдань на сьогодні
-  if(taskCount > 10 ) {
-    alert('Досягено максимальної кількості завдань');
-    return;
-  }
+const reg1 = /^[a-zA-Z]{2, 5}$/;
+console.dir(reg1);
 
-  const {target} = event; 
-  const [todoInput] = target; 
-  
-  // Валідація інпуту
-  const value = todoInput.value.trim();
-  if(value === '') {
-    alert('Текст завдання не може бути порожнім');
-    return;
-  }
-  // Створення елементу списку
-  const list = document.querySelector('#todo-list');
-  const li = document.createElement('li');
-  li.textContent = value;
-  list.append(li);
+const reg2 = new RegExp('^[a-zA-Z]{2, 5}$');
+console.dir(reg2);
 
-  // Створення кнопки для видалення елементу списку
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'remove task';
-  deleteBtn.classList.add('remove-btn');
-  deleteBtn.addEventListener('click', deleteHandler);
-  li.append(deleteBtn);
+// Експерементуємо: валідуємо email через регулярку
 
-  function deleteHandler({target: {parentNode}}) {
-    parentNode.remove();
-    taskCount--;
-  }
-  
-  // Очищення тексту в формі
-  target.reset();
-}
+const testString = 'sunnyday56@gmail.com';
+const emailRegExp = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+
+console.log(emailRegExp.exec(testString)); // array
+console.log(emailRegExp.test(testString)); // true
+
+console.log(testString.match(emailRegExp)); // array - спрацює як exec
+
+let str = 'Blue SKY';
+console.log(str.replace(/[A-Z]{3}/, 'test123'));
+
