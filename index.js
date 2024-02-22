@@ -1,25 +1,14 @@
-// timeout - виконує функцію один раз після затримки
-// interval - виконуватиме функцію багато разів з затримкою
+const user = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 20,
+  footSize: 45,
+};
 
-// const intervalID = setInterval(() => {
-//     console.log('Logging')
-// }, 2000);
+// JSON
 
-/*
-Задача: кожну секунду буде виводити в консоль числа від 1 до 10
-Виконати цю задачу через інтервали 
-*/
+// stringify - перетворює JS об'єкт в JSON
+// parse - перетворює JSON в JS об'єкт
 
-function counter() {
-    let i = 1;
-    const intervalID = setInterval(() => {
-        console.log(i++);
-        if(i > 10) {
-            clearInterval(intervalID);
-            console.timeEnd();
-        }
-    }, 1000);
-}
-
-console.time('1');
-counter();
+const jsonString = JSON.stringify(user);
+JSON.parse(jsonString);
