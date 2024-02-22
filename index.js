@@ -1,14 +1,23 @@
-const user = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 20,
-  footSize: 45,
-};
+// Серіалізація - процес перетворення об'єктів в JSON
+// Десералізація - процес перетворення JSON в JS об'єкт
 
-// JSON
+// Поверхнева копія об'єкту (shallow copy) - копія, де копіюються тільки посилання на елементи, а не самі значення
 
-// stringify - перетворює JS об'єкт в JSON
-// parse - перетворює JSON в JS об'єкт
+const originalObject = {
+  users: [
+    {
+      name: 'John',
+      age: 25
+    },
+    {
+      name: 'Lucky',
+      age: 33
+    }
+  ]
+}
 
-const jsonString = JSON.stringify(user);
-JSON.parse(jsonString);
+const shallowCopy = {...originalObject};
+
+// Глибока копія (deep copy) - створення повноціної копії об'єкта, де копіюються як посилання на його елементи, так і їх значення
+
+const deepCopy = JSON.parse(JSON.stringify(originalObject));
