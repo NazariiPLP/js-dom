@@ -4,27 +4,35 @@
     padding: 0;
 }
 
-.widget-card {
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 20px;
-}
-
+.user-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  margin:80px;
+  border: 2px dashed orangered;
 }
 
-.weather {
-    display: none;
-    margin-top: 10px;
-    padding: 20px;
-    border: 2px solid black;
+.btn {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(44, 176, 216);
+    border-color: rgb(44, 176, 216);
 }
 
-.weather-display {
-    display: block;
+.p {
+  margin: 7px;
 }
-
